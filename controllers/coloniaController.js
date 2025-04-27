@@ -31,8 +31,7 @@ exports.crear = async (req, res) => {
 
 exports.recuperarPorId = async (req, res) => {
   try {
-    const colonia = await coloniaService.recuperarPorId(req.params.id);
-    const detalleColonia = res.json(colonia);
+    const detalleColonia = await coloniaService.recuperarPorId(req.params.id);    
     res.render('colonias/detalleColonia', {
       title: 'Detalle de la colonia',
       detalleColonia,

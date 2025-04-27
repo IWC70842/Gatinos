@@ -1,12 +1,16 @@
-<div id="colonias-container">
-  {{#each colonias}}
-  <div class="colonia-card">
-    <img src="{{imagenPrincipal}}" alt="Imagen de {{nombre}}"
-    onerror="this.src='/img/default.jpg'; this.onerror=null;">
-    <h2>{{nombre}}</h2>
-    <p>{{descripcion}}</p>
-    <p>{{ubicacion}}</p>
-    <span class="estado {{estado}}">{{estado}}</span>
+<div class="container">
+  <h1 class="text-center mt-3">COLONIAS FELINAS</h1>
+  <div id="colonias-container">
+    {{#each colonias}}
+    <div class="colonia-card" data-id="{{id}}">
+        <img src="{{imagenColonia}}" alt="Imagen de {{nombre}}"
+          onerror="this.src='/img/default.jpg'; this.onerror=null;">
+        <h2>{{nombre}}</h2>
+        <p>{{descripcion}}</p>
+        <p>{{ubicacion}}</p>
+        <span class="estado {{estado}}">{{estado}}</span>      
+    </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>
+<script src="/js/colonias.js"></script>

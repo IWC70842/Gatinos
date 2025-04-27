@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+/* document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch("http://localhost:4040/colonias");
 
@@ -20,4 +20,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error cargando las colonias: ",error);
     document.getElementById("colonias-container").innerHTML="<p>Error al cargar los datos.</p>";
   }
+});
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DOM completamente cargado");
+
+  const cards = document.querySelectorAll('.colonia-card');
+  console.log(`Encontradas ${cards.length} tarjetas`);
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      console.log("Clic detectado en la tarjeta con id:", id);
+
+      if (id) {
+        window.location.href = `/colonias/${id}`;
+      }
+    });
+  });
 });

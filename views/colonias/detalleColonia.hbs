@@ -1,8 +1,8 @@
-  <div class="colonia-card">
-    <img src="{{detalleColonia.imagenPrincipal}}" alt="Imagen de {{detalleColonia.nombre}}"
+  <div class="container text-center border border-1 border-dark rounded p-3 mt-4 shadow p-3 mb-3 bg-white rounded w-50">
+    <img src="{{detalleColonia.imagenColonia}}" alt="Imagen de {{detalleColonia.nombre}}"
     onerror="this.src='/img/default.jpg'; this.onerror=null;">
     <h2>{{detalleColonia.nombre}}</h2>
     <p>{{detalleColonia.descripcion}}</p>
-    <p>{{detalleColonia.ubicacion}}</p>
+    <p>{{detalleColonia.ubicacion}}</p>    
     <span class="estado {{detalleColonia.estado}}">{{detalleColonia.estado}}</span>
   </div>

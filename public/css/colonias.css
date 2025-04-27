@@ -1,0 +1,48 @@
+/*Contenedor en grid*/
+#colonias-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+  gap: 1.5 rem;
+  padding: 2rem;
+}
+
+/*Caja de colonia*/
+.colonia-card{
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  margin: 1.5rem;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color:#1d1d1f;
+  font-family: system-ui, sans-serif;
+}
+
+.colonia-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.colonia-card img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/*Titulo de la colonia*/
+.colonia-card h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #0a3d62;
+
+}
+
+/*Descripcion*/
+.colonia-card p{
+  font-size: 1rem;
+  color: #333333;
+  margin-bottom: 0;
+}

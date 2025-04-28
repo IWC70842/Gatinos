@@ -1,25 +1,12 @@
 <div class="container">
-  <h1 class="text-center mt-3">{{detalleColonia.nombre}}</h1>
-
-  <div class="colonia-info text-center mt-4 mb-5">
-    <img src="{{detalleColonia.imagenColonia}}" alt="Imagen de {{detalleColonia.nombre}}" 
-         onerror="this.src='/img/default.jpg'; this.onerror=null;" 
-         class="img-fluid rounded mb-3" style="max-width: 300px;">
-    <p><strong>Descripción:</strong> {{detalleColonia.descripcion}}</p>
-    <p><strong>Ubicación:</strong> {{detalleColonia.ubicacion}}</p>
-    <p><strong>Tamaño:</strong> {{detalleColonia.tamano}}</p>
-    <p><strong>Teléfono:</strong> {{detalleColonia.telefono}}</p>
-    <p><strong>Móvil:</strong> {{detalleColonia.movil}}</p>
-  </div>
-
-  <h2 class="text-center mb-4">Gatos de esta colonia</h2>
+  <h1 class="text-center mt-4">Gatos de la Colonia</h1>
 
   <div id="gatos-container" class="row justify-content-center">
     {{#if gatos.length}}
       {{#each gatos}}
         <div class="card m-3 p-2 shadow" style="width: 18rem;">
           <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
-               onerror="this.src='/img/default.jpg'; this.onerror=null;">
+               onerror="this.src='/img/default-gato.jpg'; this.onerror=null;">
           <div class="card-body">
             <h5 class="card-title">{{raza}}</h5>
             <p class="card-text">
@@ -28,7 +15,7 @@
               <strong>Pelaje:</strong> {{pelaje}}<br>
               <strong>Tamaño:</strong> {{tamano}}<br>
               <strong>Salud:</strong> {{salud}}<br>
-              <strong>Edad:</strong> {{edadAproximada}}<br>
+              <strong>Edad:</strong> {{edadAproximada}} año{{#unless edadAproximada '1'}}s{{/unless}}<br>
               <strong>Motivo entrada:</strong> {{motivoEntrada}}
             </p>
           </div>
@@ -40,5 +27,5 @@
   </div>
 </div>
 
+{{!-- Cargar el CSS de gatos --}}
 {{{css}}}
-

@@ -1,27 +1,68 @@
 const gatoRepository = require("../repositories/gatoRepository");
 
 exports.listarGatos = async () => {
-  return await gatoRepository.listarGatos();
+  const gatos = await gatoRepository.listarGatos();
+
+  // Ordenamos los gatos por salud
+  const ordenSalud = {
+    'GRAVE': 0,
+    'REGULAR': 1,
+    'SANO': 2
+  };
+
+  const gatosOrdenados = gatos.sort((a, b) => ordenSalud[a.salud] - ordenSalud[b.salud]);
+
+  // Añadimos la clase CSS de salud para Handlebars
+  const gatosConClase = gatosOrdenados.map(gato => {
+    let saludClase = '';
+    switch (gato.salud) {
+      case 'GRAVE':
+        saludClase = 'salud-roja';
+        break;
+      case 'REGULAR':
+        saludClase = 'salud-naranja';
+        break;
+      case 'SANO':
+        saludClase = 'salud-verde';
+        break;
+    }
+
+    // ICONO PARA EL CER
+    const cerIcono = gato.cer
+      ? 'icono-verde fas fa-check-circle'
+      : 'icono-rojo fas fa-times-circle';
+
+    // Creamos el nuevo objeto añadiendole la nueva propiedad
+    return {
+      ...gato,
+      saludClase,
+      cerIcono
+    };
+  });
+
+  return gatosConClase;
 };
 
+
+
 exports.recuperarGatoPorId = async (id) => {
-  if(!id) throw new Error ('No ha llegado el id requerido');
+  if (!id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.recuperarGatoPorId(id);
 };
 
 exports.crearGato = async (gato) => {
-  if(!gato) throw new Error ('Datos de gato requeridos');
+  if (!gato) throw new Error('Datos de gato requeridos');
   return await gatoRepository.crearGato(gato);
 };
 
 exports.actualizarGato = async (gato) => {
-  if(!gato) throw new Error ('Datos de gato requeridos');
-  if(!gato.id) throw new Error ('No ha llegado el id requerido');    
+  if (!gato) throw new Error('Datos de gato requeridos');
+  if (!gato.id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.actualizarGato(gato);
 };
 
 exports.eliminarColonia = async (id) => {
-  if(!id) throw new Error ('No ha llegado el id requerido');
+  if (!id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.eliminarGato(id);
 };
 
@@ -57,11 +98,11 @@ exports.listarGatosPorColonia = async (coloniaId) => {
           saludClase = 'salud-verde';
           break;
       }
-      
+
       // ICONO PARA EL CER
       const cerIcono = gato.cer
-    ? 'icono-verde fas fa-check-circle'
-    : 'icono-rojo fas fa-times-circle';
+        ? 'icono-verde fas fa-check-circle'
+        : 'icono-rojo fas fa-times-circle';
 
       // Creamos el nuevo objeto añadiendole la nueva propiedad
       return {
@@ -79,7 +120,7 @@ exports.listarGatosPorColonia = async (coloniaId) => {
 };
 
 exports.guardarEdicion = async (gato) => {
-  try {    
+  try {
     return await gatoRepository.actualizarGato(gato);
   } catch (error) {
     console.error("Error al actualizar el gato: ", error.message);

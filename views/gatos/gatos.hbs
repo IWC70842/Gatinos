@@ -1,22 +1,27 @@
-<h2 class="text-center mt-4 mb-4">Gatos registrados en las colonias</h2>
+<h2 class="text-center mt-4 mb-4">Listado completo de Gatos registrados en las colonias</h2>
 
-  <div id="gatos-container" class="row justify-content-center">   
-    {{#each gatos}}
-    <div class="card m-3 p-2 shadow gato-card" data-id="{{id}}" style="width: 12rem;">
-      <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
-        onerror="this.src='/img/default.jpg'; this.onerror=null;">
-      <div class="card-body text-start">
-        <h5 class="card-title">Gato {{id}}</h5>
-        <p class="card-text">
-          <strong>Salud:</strong>
-          <span class="estado-salud {{saludClase}}"></span> {{salud}}<br>
-          <strong>CER:</strong>
-          <i class="{{cerIcono}}"></i>
-        </p>
-      </div>
+<div id="gatos-container" class="row justify-content-center">
+  {{#each gatos}}
+  <div class="card m-3 p-2 shadow gato-card" data-id="{{id}}" style="width: 12rem;">
+    <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
+      onerror="this.src='/img/default.jpg'; this.onerror=null;">
+    <div class="card-body text-start">
+      <h5 class="card-title">Gato {{id}}</h5>
+      <p class="card-text">
+        <strong>Salud:</strong>
+        <span class="estado-salud {{saludClase}}"></span> {{salud}}<br>
+        <strong>CER:</strong>
+        <i class="{{cerIcono}}"></i>
+      </p>
     </div>
-    {{/each}}
+  </div>
+  {{/each}}
+  <div class="mt-2 mb-4 d-flex justify-content-center gap-3">
+    <a href="/" class="btn btn-info">Volver al menú principal</a>
+  </div>
+  
+</div> 
 
-    {{{css}}}
+  {{{css}}}
 
-    <script src="/js/gato.js"></script>
+<script src="/js/gato.js"></script>

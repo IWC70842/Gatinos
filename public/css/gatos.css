@@ -58,3 +58,15 @@
   object-fit: cover;
   border-radius: 8px;
 }
+
+.sombra-saludable {
+  box-shadow: 0 0 50px 6px rgba(40, 167, 69, 0.6); /* verde más intenso */
+}
+
+.sombra-regular {
+  box-shadow: 0 0 50px 6px rgba(255, 193, 7, 0.6); /* amarillo dorado */
+}
+
+.sombra-enfermo {
+  box-shadow: 0 0 50px 6px rgba(220, 53, 69, 0.6); /* rojo fuerte */
+}

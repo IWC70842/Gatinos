@@ -4,13 +4,10 @@
   <!-- Tarjeta del gato -->
   <div class="d-flex align-items-center justify-content-start gap-4 p-3 border rounded shadow-sm bg-light">
     <!-- Imagen del gato -->
-    <div style="flex: 1; max-width: 45%; margin-right: 50px;">
-      <img 
-        src="{{detalleGato.imagenGato}}" 
-        class="img-fluid rounded" 
-        alt="Imagen de gato"
-        style="max-height: 400px; object-fit: cover;"
-        onerror="this.src='/img/default.jpg'; this.onerror=null;">
+    <div style="flex: 1; max-width: 45%; margin-right: 50px;"
+      class="{{#if (eq detalleGato.salud 'SANO')}}sombra-saludable{{else if (eq detalleGato.salud 'REGULAR')}}sombra-regular{{else}}sombra-enfermo{{/if}}">
+      <img src="{{detalleGato.imagenGato}}" class="img-fluid rounded" alt="Imagen de gato"
+        style="max-height: 400px; object-fit: cover;" onerror="this.src='/img/default.jpg'; this.onerror=null;">
     </div>
 
     <!-- Detalles del gato -->
@@ -22,16 +19,25 @@
       <p><strong>Sexo:</strong> {{detalleGato.sexo}}</p>
       <p><strong>Pelaje:</strong> {{detalleGato.pelaje}}</p>
       <p><strong>Tamaño:</strong> {{detalleGato.tamano}}</p>
-      <p><strong>Salud:</strong> {{detalleGato.salud}}</p>
+      <p>
+        <strong>Salud:</strong>
+        {{#if (eq detalleGato.salud 'SANO')}}
+        <span class="text-success fw-bold">Sano</span>
+        {{else if (eq detalleGato.salud 'REGULAR')}}
+        <span class="text-warning fw-bold">Regular</span>
+        {{else}}
+        <span class="text-danger fw-bold">Grave</span>
+        {{/if}}
+      </p>
       <p><strong>Vacunado:</strong> {{#if detalleGato.vacunado}}Sí{{else}}No{{/if}}</p>
       <p><strong>CER:</strong> {{#if detalleGato.cer}}Sí{{else}}No{{/if}}</p>
       <p><strong>Fecha de entrada:</strong> {{detalleGato.fechaEntrada}}</p>
       {{#if detalleGato.fechaSalida}}
-        <p><strong>Fecha de salida:</strong> {{detalleGato.fechaSalida}}</p>
+      <p><strong>Fecha de salida:</strong> {{detalleGato.fechaSalida}}</p>
       {{/if}}
       <p><strong>Motivo de entrada:</strong> {{detalleGato.motivoEntrada}}</p>
       {{#if detalleGato.motivoSalida}}
-        <p><strong>Motivo de salida:</strong> {{detalleGato.motivoSalida}}</p>
+      <p><strong>Motivo de salida:</strong> {{detalleGato.motivoSalida}}</p>
       {{/if}}
 
       <!-- Información de la colonia -->
@@ -45,7 +51,7 @@
   <div class="mt-4 d-flex justify-content-center gap-3">
     <a href="/gatos/editar/{{detalleGato.id}}" class="btn btn-primary">Editar gato</a>
     <button class="btn btn-danger" onclick="eliminarGato({{detalleGato.id}})">Eliminar gato</button>
-   <a href="/colonias/{{detalleGato.colonia.id}}" class="btn btn-info">Volver a la colonia</a> 
+    <a href="/colonias/{{detalleGato.colonia.id}}" class="btn btn-info">Ver colonia de pertenencia</a>
   </div>
 </div>
 

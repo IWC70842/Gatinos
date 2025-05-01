@@ -36,8 +36,8 @@ exports.crearGato = async (gato) => {
 };
 exports.actualizarGato = async (gato) => {
   if(!gato) throw new Error ('Gato requerido');
-  if(!gato.id) throw new Error ('Id requerido');
-  return await instance.put('/gatos', gato)
+  if(!gato.id) throw new Error ('Id requerido');  
+  return await instance.put(`/gatos/${gato.id}`, gato)
   .then(response=>response.data)
   .catch(error=>{
     console.error('Error al actualizar gato: ', error.message);

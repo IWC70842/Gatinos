@@ -93,3 +93,72 @@ exports.listarPorColonia = async (req, res) => {
     res.status(500).send("Error del servidor");
   }
 };
+
+exports.editarGato = async (req, res) => {
+  try {
+    const detalleGato = await gatoService.recuperarGatoPorId(req.params.id); // Recuperar gato por ID
+    res.render('gatos/editarGato', {
+      title: 'Editar gato',
+      detalleGato,
+      css: '<link rel="stylesheet" href="/css/gatos.css">'
+    });
+  } catch (error) {
+    console.error("Error al recuperar gato para edición: ", error.message);
+    res.status(500).send("Error del servidor");
+  }
+};
+
+exports.guardarEdicion = async (req, res) => {
+  try {
+    const id = req.params.id; // ID del gato
+    const {      
+      imagenGato,
+      edadAproximada,
+      raza,
+      colores,
+      sexo,
+      pelaje,
+      tamano,
+      vacunado,
+      cer,
+      fechaEntrada,
+      fechaSalida,
+      motivoEntrada,
+      motivoSalida,
+      'colonia.id': coloniaId
+    } = req.body;
+    
+    let estadoSalud = 'GRAVE';
+    if (vacunado === 'true' || cer === 'true') estadoSalud = 'REGULAR';
+    if (vacunado === 'true' && cer === 'true') estadoSalud = 'SANO';
+    // Asegurarnos de incluir el id junto con los otros datos
+    const gato = {
+      id: parseInt(id),
+      imagenGato,
+      edadAproximada: parseInt(edadAproximada),
+      raza,
+      colores,
+      sexo,
+      pelaje,
+      tamano,
+      vacunado,
+      cer,
+      salud: estadoSalud,
+      fechaEntrada,
+      fechaSalida: fechaSalida || null,
+      motivoEntrada,
+      motivoSalida: motivoSalida || null,
+      colonia: {
+        id: parseInt(coloniaId)
+      }
+    };
+
+    // Llamamos al servicio para guardar la edición
+    await gatoService.guardarEdicion(gato);
+
+    res.redirect(`/gatos/${id}`); // Redirigir a la vista de detalle del gato
+  } catch (error) {
+    console.error("Error al guardar los cambios del gato: ", error.message);
+    res.status(500).send("Error del servidor");
+  }
+};

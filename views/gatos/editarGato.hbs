@@ -1,0 +1,112 @@
+<div class="container text-center border border-dark rounded p-4 mt-5 shadow bg-white w-75">
+  <h1 class="mb-4">{{title}} con ID: {{detalleGato.id}}</h1>
+  <div class="d-flex align-items-center justify-content-start gap-4 p-3 border rounded shadow-sm bg-light">
+
+    <div class="col-4" style="max-width: 33%;">
+      <img src="{{detalleGato.imagenGato}}" class="img-fluid rounded" alt="Imagen de gato"
+        style="max-height: 400px; object-fit: cover;" onerror="this.src='/img/default.jpg'; this.onerror=null;">
+    </div>
+
+    <form action="/gatos/editar/{{detalleGato.id}}" method="POST" class="col-8 p-4 border rounded shadow-sm bg-light">
+
+      <input type="hidden" name="id" value="{{detalleGato.id}}">
+      <input type="hidden" name="imagenGato" value="{{detalleGato.imagenGato}}">
+      <input type="hidden" name="fechaSalida" value="{{detalleGato.fechaSalida}}">
+      <input type="hidden" name="motivoSalida" value="{{detalleGato.motivoSalida}}">
+      <input type="hidden" name="colonia.id" value="{{detalleGato.colonia.id}}">
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="edadAproximada" class="form-label w-50">Edad Aproximada:</label>
+        <input type="number" class="form-control" id="edadAproximada" name="edadAproximada"
+          value="{{detalleGato.edadAproximada}}" min="0" max="25" required>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="raza" class="form-label w-50">Raza:</label>
+        <input type="text" class="form-control" id="raza" name="raza" value="{{detalleGato.raza}}" required>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="colores" class="form-label w-50">Colores:</label>
+        <input type="text" class="form-control" id="colores" name="colores" value="{{detalleGato.colores}}" required>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="sexo" class="form-label w-50 ">Sexo:</label>
+        <select class="form-control" id="sexo" name="sexo" required>
+          <option value="MACHO" {{#if (eq detalleGato.sexo "MACHO" )}}selected{{/if}}>MACHO</option>
+          <option value="HEMBRA" {{#if (eq detalleGato.sexo "HEMBRA" )}}selected{{/if}}>HEMBRA</option>
+        </select>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="pelaje" class="form-label w-50">Pelaje:</label>
+        <select class="form-control pelaje-select" id="pelaje" name="pelaje" required>
+          <option value="CORTO" {{#if (eq detalleGato.pelaje "CORTO" )}}selected{{/if}}>CORTO</option>
+          <option value="LARGO" {{#if (eq detalleGato.pelaje "LARGO" )}}selected{{/if}}>LARGO</option>
+          <option value="SEMILARGO" {{#if (eq detalleGato.pelaje "SEMILARGO" )}}selected{{/if}}>SEMILARGO</option>
+          <option value="RIZADO" {{#if (eq detalleGato.pelaje "RIZADO" )}}selected{{/if}}>LARGO</option>
+          <option value="SIN_PELO" {{#if (eq detalleGato.pelaje "SIN_PELO" )}}selected{{/if}}>SIN_PELO</option>
+        </select>
+      </div>
+
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="tamano" class="form-label w-50">Tamaño</label>
+        <select class="form-control" id="tamano" name="tamano" required>
+          <option value="PEQUEÑO" {{#if (eq detalleGato.tamano "PEQUEÑO" )}}selected{{/if}}>PEQUEÑO</option>
+          <option value="MEDIO" {{#if (eq detalleGato.tamano "MEDIANO" )}}selected{{/if}}>MEDIANO</option>
+          <option value="GRANDE" {{#if (eq detalleGato.tamano "GRANDE" )}}selected{{/if}}>GRANDE</option>
+        </select>
+      </div>
+
+      
+      <div class="mb-3 d-flex align-items-center">
+        <label for="salud" class="form-label w-50">Salud</label>
+        <select class="form-control" id="salud" name="salud" disabled>
+          <option value="SANO" {{#if (eq detalleGato.salud "SANO" )}}selected{{/if}}>Sano</option>
+          <option value="REGULAR" {{#if (eq detalleGato.salud "REGULAR" )}}selected{{/if}}>Regular</option>
+          <option value="GRAVE" {{#if (eq detalleGato.salud "GRAVE" )}}selected{{/if}}>Grave</option>
+        </select>
+      </div>
+
+      
+      <div class="mb-3 d-flex align-items-center">
+        <label for="vacunado" class="form-label w-50">Vacunado</label>
+        <select class="form-control" id="vacunado" name="vacunado" required>
+          <option value="true" {{#if detalleGato.vacunado}}selected{{/if}}>Sí</option>
+          <option value="false" {{#unless detalleGato.vacunado}}selected{{/unless}}>No</option>
+        </select>
+      </div>
+
+      
+      <div class="mb-3 d-flex align-items-center">
+        <label for="cer" class="form-label w-50">CER</label>
+        <select class="form-control" id="cer" name="cer" required>
+          <option value="true" {{#if detalleGato.cer}}selected{{/if}}>Sí</option>
+          <option value="false" {{#unless detalleGato.cer}}selected{{/unless}}>No</option>
+        </select>
+      </div>
+
+      
+      <div class="mb-3 d-flex align-items-center">
+        <label for="fechaEntrada" class="form-label w-50">Fecha de entrada</label>
+        <input type="date" class="form-control" id="fechaEntrada" name="fechaEntrada"
+          value="{{detalleGato.fechaEntrada}}" required>
+      </div>
+
+      
+      <div class="mb-3 d-flex align-items-center">
+        <label for="motivoEntrada" class="form-label w-50">Motivo de entrada</label>
+        <input type="text" class="form-control" id="motivoEntrada" name="motivoEntrada"
+          value="{{detalleGato.motivoEntrada}}" required>
+      </div>
+
+      <div class="d-flex justify-content-center gap-3">
+        <button type="submit" class="btn btn-success">Guardar cambios</button>
+        <a href="/gatos/{{detalleGato.id}}" class="btn btn-info">Cancelar</a> 
+      </div>
+    </form>
+
+  </div>
+</div>

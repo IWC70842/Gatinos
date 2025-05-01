@@ -8,6 +8,8 @@ router.get('/colonia/:coloniaId', gatoController.listarPorColonia);
 router.post('/', gatoController.crear);
 router.put('/:id', gatoController.actualizar);
 router.delete('/:id', gatoController.eliminar);
+router.get('/editar/:id', gatoController.editarGato); 
+router.post('/editar/:id', gatoController.guardarEdicion); 
 
 
 module.exports = router;

@@ -1,11 +1,52 @@
-<h1>{{title}}</h1>
-<div>
-  <h2>{{detalleGato.nombre}}</h2>
-  <p><strong>Salud:</strong> {{detalleGato.salud}}</p>
-  <p><strong>CER:</strong> {{detalleGato.cer}}</p>
-  <p><strong>Descripción:</strong> {{detalleGato.descripcion}}</p>
-  
+<div class="container text-center border border-dark rounded p-4 mt-5 shadow bg-white w-75">
+  <h1 class="mb-4">{{title}} con ID: {{detalleGato.id}}</h1>
+
+  <!-- Tarjeta del gato -->
+  <div class="d-flex align-items-center justify-content-start gap-4 p-3 border rounded shadow-sm bg-light">
+    <!-- Imagen del gato -->
+    <div style="flex: 1; max-width: 45%; margin-right: 50px;">
+      <img 
+        src="{{detalleGato.imagenGato}}" 
+        class="img-fluid rounded" 
+        alt="Imagen de gato"
+        style="max-height: 400px; object-fit: cover;"
+        onerror="this.src='/img/default.jpg'; this.onerror=null;">
+    </div>
+
+    <!-- Detalles del gato -->
+    <div style="flex: 2; text-align: left;">
+      <h3>{{detalleGato.nombre}}</h3>
+      <p><strong>Edad aproximada:</strong> {{detalleGato.edadAproximada}} años</p>
+      <p><strong>Raza:</strong> {{detalleGato.raza}}</p>
+      <p><strong>Colores:</strong> {{detalleGato.colores}}</p>
+      <p><strong>Sexo:</strong> {{detalleGato.sexo}}</p>
+      <p><strong>Pelaje:</strong> {{detalleGato.pelaje}}</p>
+      <p><strong>Tamaño:</strong> {{detalleGato.tamano}}</p>
+      <p><strong>Salud:</strong> {{detalleGato.salud}}</p>
+      <p><strong>Vacunado:</strong> {{#if detalleGato.vacunado}}Sí{{else}}No{{/if}}</p>
+      <p><strong>CER:</strong> {{#if detalleGato.cer}}Sí{{else}}No{{/if}}</p>
+      <p><strong>Fecha de entrada:</strong> {{detalleGato.fechaEntrada}}</p>
+      {{#if detalleGato.fechaSalida}}
+        <p><strong>Fecha de salida:</strong> {{detalleGato.fechaSalida}}</p>
+      {{/if}}
+      <p><strong>Motivo de entrada:</strong> {{detalleGato.motivoEntrada}}</p>
+      {{#if detalleGato.motivoSalida}}
+        <p><strong>Motivo de salida:</strong> {{detalleGato.motivoSalida}}</p>
+      {{/if}}
+
+      <!-- Información de la colonia -->
+      <hr>
+      <p><strong>Colonia:</strong> {{detalleGato.colonia.nombre}}</p>
+      <p><strong>Ubicación:</strong> {{detalleGato.colonia.ubicacion}}</p>
+    </div>
+  </div>
+
+  <!-- Botones -->
+  <div class="mt-4 d-flex justify-content-center gap-3">
+    <a href="/gatos/editar/{{detalleGato.id}}" class="btn btn-primary">Editar gato</a>
+    <button class="btn btn-danger" onclick="eliminarGato({{detalleGato.id}})">Eliminar gato</button>
+   <a href="/colonias/{{detalleGato.colonia.id}}" class="btn btn-info">Volver a la colonia</a> 
+  </div>
 </div>
 
-
-{{{css}}} 
+{{{css}}}

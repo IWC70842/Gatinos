@@ -6,11 +6,15 @@
         <img src="{{imagenColonia}}" alt="Imagen de {{nombre}}"
           onerror="this.src='/img/default.jpg'; this.onerror=null;">
         <h2 class="mt-3">{{nombre}}</h2>
-        <p>{{descripcion}}</p>
+        <p>{{descripcion}}</p><br>
         <p>{{ubicacion}}</p>
         <span class="estado {{estado}}">{{estado}}</span>      
     </div>
     {{/each}}
   </div>
+  <a href="/" class="btn btn-success">Crear Nueva Colonia</a>
+  <a href="/" class="btn btn-info">Volver al menú principal</a>
+  
 </div>
+
 <script src="/js/colonias.js"></script>

@@ -77,3 +77,12 @@ exports.listarGatosPorColonia = async (coloniaId) => {
     throw new Error("No se pudieron recuperar los gatos");
   }
 };
+
+exports.guardarEdicion = async (gato) => {
+  try {    
+    return await gatoRepository.actualizarGato(gato);
+  } catch (error) {
+    console.error("Error al actualizar el gato: ", error.message);
+    throw new Error("No se pudo actualizar el gato");
+  }
+};

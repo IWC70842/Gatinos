@@ -5,11 +5,19 @@ const routes = require('./routes');
 
 const app = express();
 
+// helpers para Handlebars
+const helpers = {
+  eq: (a, b) => a === b
+};
+
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 // Configurar Handlebars como motor de plantillas
-app.engine('hbs', exphbs.engine({extname:'hbs'}));
+app.engine('hbs', exphbs.engine({
+  extname: 'hbs',
+  helpers: helpers 
+}));
 app.set('view engine','hbs');
 app.set('views', path.join(__dirname,'views'));
 

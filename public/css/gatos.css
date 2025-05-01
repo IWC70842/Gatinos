@@ -8,3 +8,53 @@
   height: 200px;
   object-fit: cover;
 }
+
+.gato-card img{
+  width: 100%;  
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* Indicadores de salud para gatos */
+.estado-salud {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.salud-roja {
+  background-color: #dc3545; /* rojo Bootstrap */
+}
+
+.salud-naranja {
+  background-color: #fd7e14; /* naranja Bootstrap */
+}
+
+.salud-verde {
+  background-color: #28a745; /* verde Bootstrap */
+}
+
+/*Iconos para mostrar junto al CER*/
+.icono-verde {
+  color: #28a745;
+}
+
+.icono-rojo {
+  color: #dc3545;
+}
+
+/*Animación de las tarjetas de gato al pasar por encima*/
+.gato-card:hover {
+  transform: translateY(-3px);
+  transform: scale(1.1);
+  transition: ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.gato-card img{
+  width: 100%;  
+  object-fit: cover;
+  border-radius: 8px;
+}

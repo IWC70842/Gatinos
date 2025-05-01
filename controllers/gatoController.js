@@ -2,10 +2,11 @@ const gatoService = require("../services/gatoService");
 
 exports.listar = async (req, res) => {
   try {
-    const gatos = await gatoService.listarGatos();
+    const { gatosActivos, gatosEliminados } = await gatoService.listarGatos();
     res.render('gatos/gatos', {
       title: 'Gatos',
-      gatos,
+      gatosActivos,
+      gatosEliminados,
       css: '<link rel="stylesheet" href="/css/gatos.css">'
     });
   } catch (error) {

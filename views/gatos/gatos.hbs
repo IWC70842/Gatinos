@@ -1,27 +1,47 @@
 <h2 class="text-center mt-4 mb-4">Listado completo de Gatos registrados en las colonias</h2>
 
 <div id="gatos-container" class="row justify-content-center">
-  {{#each gatos}}
-  <div class="card m-3 p-2 shadow gato-card" data-id="{{id}}" style="width: 12rem;">
-    <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
-      onerror="this.src='/img/default.jpg'; this.onerror=null;">
-    <div class="card-body text-start">
-      <h5 class="card-title">Gato {{id}}</h5>
-      <p class="card-text">
-        <strong>Salud:</strong>
-        <span class="estado-salud {{saludClase}}"></span> {{salud}}<br>
-        <strong>CER:</strong>
-        <i class="{{cerIcono}}"></i>
-      </p>
+  {{#each gatosActivos}}
+    <div class="card m-3 p-2 shadow gato-card" data-id="{{id}}" style="width: 12rem;">
+      <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
+        onerror="this.src='/img/default.jpg'; this.onerror=null;">
+      <div class="card-body text-start">
+        <h5 class="card-title">Gato {{id}}</h5>
+        <p class="card-text">
+          <strong>Salud:</strong>
+          <span class="estado-salud {{saludClase}}"></span> {{salud}}<br>
+          <strong>CER:</strong>
+          <i class="{{cerIcono}}"></i>
+        </p>
+      </div>
     </div>
-  </div>
   {{/each}}
-  <div class="mt-2 mb-4 d-flex justify-content-center gap-3">
+
+  <div class="mt-4 mb-4 w-100 text-center">
+    <h2>Histórico de gatos eliminados de las colonias</h2>
+  </div>
+
+  {{#each gatosEliminados}}
+    <div class="card m-3 p-2 shadow gato-card eliminado" data-id="{{id}}" style="width: 12rem;">
+      <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
+        onerror="this.src='/img/default.jpg'; this.onerror=null;">
+      <div class="card-body text-start">
+        <h5 class="card-title">Gato {{id}}</h5>
+        <p class="card-text">
+          <strong>Salud:</strong>
+          <span class="estado-salud {{saludClase}}"></span> {{salud}}<br>
+          <strong>CER:</strong>
+          <i class="{{cerIcono}}"></i><br>
+          <strong>Fecha de salida:</strong> {{fechaSalida}}
+        </p>
+      </div>
+    </div>
+  {{/each}}
+
+  <div class="mt-4 mb-4 d-flex justify-content-center gap-3 w-100">
     <a href="/" class="btn btn-info">Volver al menú principal</a>
   </div>
-  
-</div> 
+</div>
 
-  {{{css}}}
-
+{{{css}}}
 <script src="/js/gato.js"></script>

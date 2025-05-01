@@ -3,17 +3,13 @@ const gatoRepository = require("../repositories/gatoRepository");
 exports.listarGatos = async () => {
   const gatos = await gatoRepository.listarGatos();
 
-  // Ordenamos los gatos por salud
   const ordenSalud = {
     'GRAVE': 0,
     'REGULAR': 1,
     'SANO': 2
   };
 
-  const gatosOrdenados = gatos.sort((a, b) => ordenSalud[a.salud] - ordenSalud[b.salud]);
-
-  // Añadimos la clase CSS de salud para Handlebars
-  const gatosConClase = gatosOrdenados.map(gato => {
+  const gatosConClase = gatos.map(gato => {
     let saludClase = '';
     switch (gato.salud) {
       case 'GRAVE':
@@ -27,12 +23,10 @@ exports.listarGatos = async () => {
         break;
     }
 
-    // ICONO PARA EL CER
     const cerIcono = gato.cer
       ? 'icono-verde fas fa-check-circle'
       : 'icono-rojo fas fa-times-circle';
 
-    // Creamos el nuevo objeto añadiendole la nueva propiedad
     return {
       ...gato,
       saludClase,
@@ -40,10 +34,18 @@ exports.listarGatos = async () => {
     };
   });
 
-  return gatosConClase;
+  const gatosActivos = gatosConClase
+    .filter(gato => gato.fechaSalida === null)
+    .sort((a, b) => ordenSalud[a.salud] - ordenSalud[b.salud]);
+
+  const gatosEliminados = gatosConClase
+    .filter(gato => gato.fechaSalida !== null);
+
+  return {
+    gatosActivos,
+    gatosEliminados
+  };
 };
-
-
 
 exports.recuperarGatoPorId = async (id) => {
   if (!id) throw new Error('No ha llegado el id requerido');

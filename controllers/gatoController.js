@@ -15,17 +15,52 @@ exports.listar = async (req, res) => {
   }
 };
 
+exports.mostrarFormularioCrear = (req, res) => {
+  const coloniaId = req.params.coloniaId;
+
+  res.render('gatos/crearGato', {
+    title: 'Registrar nuevo gato',
+    coloniaId: coloniaId,  
+    css: '<link rel="stylesheet" href="/css/gatos.css">'
+  });
+};
+
 exports.crear = async (req, res) => {
   try {
-    const resultado = await gatoService.crearGato(req.body);
-    res.render('gatos/crearGato', {
-      title: 'Crear gato',
-      resultado,
-      css: '<link rel="stylesheet" href="/css/gatos.css">'
-    });
+    const { colonia, edadAproximada, raza, colores, sexo, pelaje, tamano, salud, vacunado, cer, fechaEntrada, motivoEntrada, imagenGato } = req.body;
+      // Cálculo del estado de salud
+    let estadoSalud = 'GRAVE';
+    if (vacunado === 'true' || cer === 'true') estadoSalud = 'REGULAR';
+    if (vacunado === 'true' && cer === 'true') estadoSalud = 'SANO';
+
+    // Estructura del nuevo gato
+    const nuevoGato = {
+      colonia: {
+        id: colonia.id // Accedemos al id de la colonia desde el objeto colonia
+      },
+      edadAproximada,
+      raza,
+      colores,
+      sexo,
+      pelaje,
+      tamano,
+      salud: estadoSalud,
+      vacunado,
+      cer,
+      fechaEntrada,
+      motivoEntrada,
+      imagenGato
+    };
+
+    // Llamada a un servicio para guardar el gato en la base de datos
+    const resultado = await gatoService.crearGato(nuevoGato);
+
+    // Redirigir a la página de detalles de la colonia
+    res.redirect(`/colonias/${colonia.id}`);
+
   } catch (error) {
-    console.error("Error al crear gato: ", error.message);
-    res.status(500).send("Error del servidor");
+    console.error("Error al crear el gato:", error.message);
+    res.status(500).send("Error al crear el gato.");
   }
 };
 

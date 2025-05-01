@@ -30,7 +30,7 @@ exports.crear = async (req, res) => {
 
 exports.recuperarPorId = async (req, res) => {
   try {
-    const detalleGato = await gatoService.recuperarPorId(req.params.id);
+    const detalleGato = await gatoService.recuperarGatoPorId(req.params.id);
     res.render('gatos/detalleGato', {
       title: 'Detalle del gato',
       detalleGato,

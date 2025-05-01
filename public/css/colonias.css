@@ -79,14 +79,14 @@
 }
 
 /*Animación de las tarjetas de gato al pasar por encima*/
-#gato-card:hover {
+.gato-card:hover {
   transform: translateY(-3px);
   transform: scale(1.1);
   transition: ease;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
-#gato-card img{
+.gato-card img{
   width: 100%;  
   object-fit: cover;
   border-radius: 8px;

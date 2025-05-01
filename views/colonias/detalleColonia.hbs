@@ -23,7 +23,7 @@
   <div id="gatos-container" class="row justify-content-center">
     {{#if gatos.length}}
     {{#each gatos}}
-    <div class="card m-3 p-2 shadow" style="width: 12rem;" id="gato-card">
+    <div class="card m-3 p-2 shadow gato-card" data-id="{{id}}" style="width: 12rem;">
       <img src="{{imagenGato}}" class="card-img-top" alt="Imagen de gato"
         onerror="this.src='/img/default.jpg'; this.onerror=null;">
       <div class="card-body text-start">
@@ -43,5 +43,5 @@
   </div>
 </div>
 
-
 {{{css}}}
+<script src="/js/gato.js"></script>

@@ -75,12 +75,19 @@ exports.eliminar = async (req, res) => {
  */
 exports.listarPorColonia = async (req, res) => {
   try {
-    const gatos = await gatoService.obtenerGatosPorColonia(req.params.coloniaId);
-    res.render('gatos/gatosColonia', {
+    // Paso 1: Obtener el coloniaId desde los parámetros de la URL
+    const coloniaId = req.params.coloniaId;
+
+    // Paso 2: Llamar al servicio para obtener los gatos de la colonia
+    const gatos = await gatoService.listarGatosPorColonia(coloniaId);
+
+    // Paso 3: Pasar los gatos filtrados y ordenados a la vista
+    res.render('colonias/colonia', {
       title: 'Gatos de la colonia',
-      gatos,
+      gatos: gatos,  // Aquí pasamos la lista de gatos ordenados
       css: '<link rel="stylesheet" href="/css/gatos.css">'
     });
+
   } catch (error) {
     console.error("Error al obtener gatos de la colonia: ", error.message);
     res.status(500).send("Error del servidor");

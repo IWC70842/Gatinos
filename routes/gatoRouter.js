@@ -10,3 +10,4 @@ router.put('/:id', gatoController.actualizar);
 router.delete('/:id', gatoController.eliminar);
 
 module.exports = router;
+

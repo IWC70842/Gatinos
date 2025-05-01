@@ -29,8 +29,21 @@ exports.eliminarColonia = async (id) => {
 exports.listarGatosPorColonia = async (coloniaId) => {
   try {
     const gatos = await gatoRepository.listarGatos(); // Traemos todos los gatos
-    const gatosColonia = gatos.filter(gato => gato.colonia.id === parseInt(coloniaId));
-    return gatosColonia;
+
+    // Filtramos los gatos por colonia y fechaSalida == null
+    const gatosColonia = gatos
+      .filter(gato => gato.colonia.id === parseInt(coloniaId) && gato.fechaSalida === null);
+
+    // Ordenamos los gatos por salud
+    const ordenSalud = {
+      'GRAVE': 0,
+      'REGULAR': 1,
+      'SANO': 2
+    };
+
+    const gatosColoniaOrdenados = gatosColonia.sort((a, b) => ordenSalud[a.salud] - ordenSalud[b.salud]);
+
+    return gatosColoniaOrdenados;
   } catch (error) {
     console.error("Error al recuperar los gatos de la colonia: ", error.message);
     throw new Error("No se pudieron recuperar los gatos");

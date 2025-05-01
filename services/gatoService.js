@@ -61,7 +61,7 @@ exports.actualizarGato = async (gato) => {
   return await gatoRepository.actualizarGato(gato);
 };
 
-exports.eliminarColonia = async (id) => {
+exports.eliminarGato = async (id) => {
   if (!id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.eliminarGato(id);
 };

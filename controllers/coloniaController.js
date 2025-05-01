@@ -68,7 +68,7 @@ exports.eliminar = async (req, res) => {
       css: '<link rel="stylesheet" href="/css/colonias.css">'
     });
   } catch (error) {
-    console.error("Error al crear colonia: ", error.message);
+    console.error("Error al eliminar colonia: ", error.message);
     res.status(500).send("Error del servidor");
   }
 };

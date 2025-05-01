@@ -59,14 +59,10 @@ exports.actualizar = async (req, res) => {
 exports.eliminar = async (req, res) => {
   try {
     const resultado = await gatoService.eliminarGato(req.params.id);
-    res.render('gatos/borrarGato', {
-      title: 'Eliminar gato',
-      resultado,
-      css: '<link rel="stylesheet" href="/css/gatos.css">'
-    });
+    res.status(200).json({ mensaje: 'Gato eliminado', resultado });
   } catch (error) {
     console.error("Error al eliminar gato: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).json({ error: 'Hubo un error al eliminar el gato' });
   }
 };
 

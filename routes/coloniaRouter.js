@@ -16,7 +16,7 @@ router.post('/editar/:id', coloniaController.guardarEdicion); // Ruta para guard
 router.get('/', coloniaController.listar);
 router.post('/', coloniaController.crear);
 
-router.get('/:id', coloniaController.recuperarColoniaPorId);
+router.get('/:id', coloniaController.recuperarDetallesColoniaConGatos);
 
 
 router.delete('/:id', coloniaController.eliminar);

@@ -1,4 +1,4 @@
-<div class="container text-center border border-dark rounded p-4 mt-5 shadow bg-white w-75">
+<div class="container text-center border border-dark rounded p-4 mt-5 mb-4 shadow bg-white w-75">
   <h1 class="mb-4">{{title}} con ID: {{detalleGato.id}}</h1>
   <div class="d-flex align-items-center justify-content-start gap-4 p-3 border rounded shadow-sm bg-light">
 
@@ -103,10 +103,11 @@
       </div>
 
       <div class="d-flex justify-content-center gap-3">
-        <button type="submit" class="btn btn-success">Guardar cambios</button>
-        <a href="/gatos/{{detalleGato.id}}" class="btn btn-info">Cancelar</a> 
+        <button type="submit" class="btn btn-outline-success shadow">Guardar cambios</button>
+        <a href="/gatos/{{detalleGato.id}}" class="btn btn-outline-info shadow">Cancelar</a> 
       </div>
     </form>
 
   </div>
 </div>
+{{{css}}}

@@ -1,9 +1,9 @@
 exports.dashboard = (req,res)=>{
   res.render('index',{
-    title: 'Panel de control',
+    title: 'Gestión de Colonias Felinas',
     sections: [
-      {name: 'Colonias', path: '/colonias'},
-      {name: 'Gatos', path: '/gatos'}
+      {name: 'Gestión de Colonias', path: '/colonias'},
+      {name: 'Listado de Gatos', path: '/gatos'}
     ]
   });
 };

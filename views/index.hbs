@@ -1,16 +1,14 @@
 <!--En esta pagina debería venir el login para entrar a la web con un rol determinado -->
-<div class="container text-center border border-1 border-dark rounded p-3 mt-4 shadow p-3 mb-3 bg-white rounded w-50">
-<h1 class="">{{title}}</h1>
+<div class="container text-center border border-1 border-dark rounded p-3 mt-5 shadow bg-white w-50">
+  <h1>{{title}}</h1>
 
-<nav>
-  <ul>
+  <nav class="my-3">
     {{#each sections}}
-    <li><a href="{{path}}">{{name}}</a></li>
+      <a href="{{path}}" class="btn btn-outline-primary m-2 shadow">{{name}}</a>
     {{/each}}
-  </ul>
-</nav>
+  </nav>
 
-<section>
-  <p>Bienvenido al panel de administración.</p>
-</section> 
+  <section>
+    <p>Bienvenido al panel de administración.</p>
+  </section>
 </div>

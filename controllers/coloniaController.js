@@ -67,7 +67,7 @@ exports.crear = async (req, res) => {
  * Recuperar los detalles de una colonia específica.
  * Recupera los datos de la colonia utilizando su ID y renderiza la vista con los datos de la colonia.
  */
-exports.recuperarPorId = async (req, res) => {
+exports.recuperarColoniaPorId = async (req, res) => {
   try {
     const detalleColonia = await coloniaService.recuperarPorId(req.params.id);
     res.render('colonias/detalleColonia', {
@@ -76,7 +76,52 @@ exports.recuperarPorId = async (req, res) => {
       css: '<link rel="stylesheet" href="/css/colonias.css">'
     });
   } catch (error) {
-    console.error("Error al crear colonia: ", error.message);
+    console.error("Error al recuperar colonia: ", error.message);
+    res.status(500).send("Error del servidor");
+  }
+};
+
+// Mostrar formulario de edición de colonia
+exports.editarColonia = async (req, res) => {
+  const coloniaId = req.params.id;
+  try {
+    const colonia = await coloniaService.recuperarPorId(coloniaId);    
+    res.render('colonias/editarColonia', {
+      title: `Editar colonia: ${colonia.nombre}`,
+      colonia,
+      css: '<link rel="stylesheet" href="/css/colonias.css">'
+    });
+  } catch (error) {
+    console.error("Error al obtener colonia para edición: ", error.message);
+    res.status(500).send("Error del servidor");
+  }
+};
+
+// Guardar los cambios después de editar colonia
+exports.guardarEdicion = async (req, res) => {
+  const coloniaId = req.params.id;
+  const { nombre, imagenColonia, descripcion, telefono, movil, ubicacion, tamano } = req.body;
+
+  try {
+    // Incluir el ID dentro del objeto que se envía al servicio
+    const datosActualizados = {
+      id: coloniaId,
+      nombre,
+      imagenColonia,
+      descripcion,
+      telefono,
+      movil,
+      ubicacion,
+      tamano
+    };
+
+    // Llamar al servicio con el objeto completo
+    await coloniaService.actualizarColonia(datosActualizados);
+
+    // Redirigir a la vista de detalles de la colonia editada
+    res.redirect(`/colonias/${coloniaId}`);
+  } catch (error) {
+    console.error("Error al guardar la edición de colonia: ", error.message);
     res.status(500).send("Error del servidor");
   }
 };
@@ -94,7 +139,7 @@ exports.actualizar = async (req, res) => {
       css: '<link rel="stylesheet" href="/css/colonias.css">'
     });
   } catch (error) {
-    console.error("Error al crear colonia: ", error.message);
+    console.error("Error al actualizar colonia: ", error.message);
     res.status(500).send("Error del servidor");
   }
 };
@@ -122,7 +167,7 @@ exports.eliminar = async (req, res) => {
  * Recupera la colonia por ID y lista los gatos asociados a ella, luego renderiza la 
  * vista de detalle de la colonia.
  */
-exports.recuperarPorId = async (req, res) => {
+exports.recuperarDetallesColoniaConGatos = async (req, res) => {
   try {
     const idColonia = req.params.id;
 
@@ -145,3 +190,4 @@ exports.recuperarPorId = async (req, res) => {
     res.status(500).send("Error del servidor");
   }
 };
+

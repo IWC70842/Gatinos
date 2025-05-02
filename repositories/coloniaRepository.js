@@ -37,7 +37,7 @@ exports.crearColonia = async (colonia) => {
 exports.actualizarColonia = async (colonia) => {
   if(!colonia) throw new Error ('Colonia requerida');
   if(!colonia.id) throw new Error ('Id requerido');
-  return await instance.put('/colonias', colonia)
+  return await instance.put(`/colonias/${colonia.id}`, colonia)
   .then(response=>response.data)
   .catch(error=>{
     console.error('Error al actualizar colonia: ', error.message);

@@ -29,20 +29,36 @@ exports.listar = async (req, res) => {
   }
 };
 
+// Función para mostrar el formulario de creación de colonia
+exports.mostrarFormularioCrear = (req, res) => {
+  res.render('colonias/crearColonia', {
+    title: 'Crear Colonia',
+    css: '<link rel="stylesheet" href="/css/colonias.css">'
+  });
+};
+
 /**
  * Crear una nueva colonia.
- * Recibe los datos del formulario, crea la colonia y luego muestra la vista de creación de colonia.
+ * Recibe los datos del formulario y crea la colonia.
  */
 exports.crear = async (req, res) => {
   try {
-    const resultado = await coloniaService.crearColonia(req.body);
-    res.render('colonias/crearColonias', {
-      title: 'Creacion de colonias',
-      resultado,
-      css: '<link rel="stylesheet" href="/css/colonias.css">'
-    });
+    const datosColonia = {
+      nombre: req.body.nombre,
+      imagenColonia: req.body.imagenColonia,
+      descripcion: req.body.descripcion,
+      telefono: req.body.telefono,
+      movil: req.body.movil,
+      ubicacion: req.body.ubicacion,
+      tamano: req.body.tamano
+    };
+
+    const resultado = await coloniaService.crearColonia(datosColonia);
+
+    // Redirige a la lista de colonias con un mensaje de éxito
+    res.redirect('/colonias');
   } catch (error) {
-    console.error("Error al crear colonia: ", error.message);
+    console.error("Error al crear colonia: ", error.message);    
     res.status(500).send("Error del servidor");
   }
 };
@@ -53,7 +69,7 @@ exports.crear = async (req, res) => {
  */
 exports.recuperarPorId = async (req, res) => {
   try {
-    const detalleColonia = await coloniaService.recuperarPorId(req.params.id);    
+    const detalleColonia = await coloniaService.recuperarPorId(req.params.id);
     res.render('colonias/detalleColonia', {
       title: 'Detalle de la colonia',
       detalleColonia,
@@ -89,7 +105,7 @@ exports.actualizar = async (req, res) => {
  */
 exports.eliminar = async (req, res) => {
   try {
-    const resultado = await coloniaService.eliminarColonia(req.params.id); 
+    const resultado = await coloniaService.eliminarColonia(req.params.id);
     res.render('colonias/borrarColonia', {
       title: 'Eliminar colonia',
       resultado,
@@ -129,4 +145,3 @@ exports.recuperarPorId = async (req, res) => {
     res.status(500).send("Error del servidor");
   }
 };
- 

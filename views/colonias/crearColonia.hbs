@@ -1,0 +1,75 @@
+<!--
+  @author Jose Antonio Pozo Gonzalez
+  @email iwc70842@educastur.es
+  @version 1.0
+  @description Plantilla con formulario para crear una nueva colonia
+-->
+
+<div class="container text-center border border-dark rounded p-4 mt-5 shadow bg-white w-75">
+  <h1 class="mb-4">Registrar nueva colonia</h1>
+
+  <div class="d-flex align-items-center justify-content-start gap-4 p-3 border rounded shadow-sm bg-light">
+
+    <!-- Imagen predeterminada para la colonia -->
+    <div class="col-4" style="max-width: 33%;">
+      <img src="/img/default.jpg" class="img-fluid rounded" alt="Imagen de colonia"
+        style="max-height: 400px; object-fit: cover;" id="previewImagenColonia">
+    </div>
+
+    <!-- Formulario de creación de colonia -->
+    <form action="/colonias" method="POST" class="col-8 p-4 border rounded shadow-sm bg-light">
+      <div class="mb-3 d-flex align-items-center">
+        <label for="nombre" class="form-label w-50">Nombre de la colonia:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required pattern="^[a-zA-Z\s]+$"
+          placeholder="El nombre debe contener solo letras y espacios.">
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="imagenColonia" class="form-label w-50">URL de la imagen:</label>
+        <input type="url" class="form-control" id="imagenColonia" name="imagenColonia"
+          placeholder="https://example.com/imagen.jpg" pattern="https?://.+"
+          title="Debe ser una URL válida que comience con 'http://' o 'https://'">
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="descripcion" class="form-label w-50">Descripción:</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" maxlength="500" required
+          placeholder="Máximo 500 caracteres"></textarea>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="telefono" class="form-label w-50">Teléfono fijo:</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" required pattern="^\d{7,15}$"
+          title="Debe ser un número de teléfono válido, solo dígitos (entre 7 y 15)." maxlength="15">
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="movil" class="form-label w-50">Teléfono móvil:</label>
+        <input type="text" class="form-control" id="movil" name="movil" required pattern="^\d{7,15}$"
+          title="Debe ser un número de teléfono válido, solo dígitos (entre 7 y 15)." maxlength="15">
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="ubicacion" class="form-label w-50">Ubicación:</label>
+        <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="tamano" class="form-label w-50">Tamaño:</label>
+        <select class="form-control" id="tamano" name="tamano" required>
+          <option value="">Selecciona un tamaño</option>
+          <option value="Pequeña">Pequeña</option>
+          <option value="Mediana">Mediana</option>
+          <option value="Grande">Grande</option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-center gap-3">
+        <button type="submit" class="btn btn-outline-success">Registrar colonia</button>
+        <a href="/colonias" class="btn btn-outline-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{{{css}}}

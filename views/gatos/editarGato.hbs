@@ -1,3 +1,10 @@
+<!--
+  @author Jose Antonio Pozo Gonzalez
+  @email iwc70842@educastur.es
+  @version 1.0
+  @description Plantilla para la Edición de un gato
+-->
+
 <div class="container text-center border border-dark rounded p-4 mt-5 mb-4 shadow bg-white w-75">
   <h1 class="mb-4">{{title}} con ID: {{detalleGato.id}}</h1>
   <div class="d-flex align-items-center justify-content-start gap-4 p-3 border rounded shadow-sm bg-light">
@@ -60,7 +67,7 @@
         </select>
       </div>
 
-      
+
       <div class="mb-3 d-flex align-items-center">
         <label for="salud" class="form-label w-50">Salud</label>
         <select class="form-control" id="salud" name="salud" disabled>
@@ -70,7 +77,7 @@
         </select>
       </div>
 
-      
+
       <div class="mb-3 d-flex align-items-center">
         <label for="vacunado" class="form-label w-50">Vacunado</label>
         <select class="form-control" id="vacunado" name="vacunado" required>
@@ -79,7 +86,7 @@
         </select>
       </div>
 
-      
+
       <div class="mb-3 d-flex align-items-center">
         <label for="cer" class="form-label w-50">CER</label>
         <select class="form-control" id="cer" name="cer" required>
@@ -88,14 +95,14 @@
         </select>
       </div>
 
-      
+
       <div class="mb-3 d-flex align-items-center">
         <label for="fechaEntrada" class="form-label w-50">Fecha de entrada</label>
         <input type="date" class="form-control" id="fechaEntrada" name="fechaEntrada"
           value="{{detalleGato.fechaEntrada}}" required>
       </div>
 
-      
+
       <div class="mb-3 d-flex align-items-center">
         <label for="motivoEntrada" class="form-label w-50">Motivo de entrada</label>
         <input type="text" class="form-control" id="motivoEntrada" name="motivoEntrada"
@@ -104,7 +111,7 @@
 
       <div class="d-flex justify-content-center gap-3">
         <button type="submit" class="btn btn-outline-success shadow">Guardar cambios</button>
-        <a href="/gatos/{{detalleGato.id}}" class="btn btn-outline-info shadow">Cancelar</a> 
+        <a href="/gatos/{{detalleGato.id}}" class="btn btn-outline-info shadow">Cancelar</a>
       </div>
     </form>
 

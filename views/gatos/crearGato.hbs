@@ -1,3 +1,10 @@
+<!--
+  @author Jose Antonio Pozo Gonzalez
+  @email iwc70842@educastur.es
+  @version 1.0
+  @description Plantilla para la creación de un gato
+-->
+
 <div class="container text-center border border-dark rounded p-4 mt-5 shadow bg-white w-75">
   <h1 class="mb-4">Registrar nuevo gato para la colonia: {{coloniaId}}</h1>
 
@@ -10,7 +17,7 @@
 
     <form action="/gatos/crear" method="POST" class="col-8 p-4 border rounded shadow-sm bg-light">
 
-      <input type="hidden" name="colonia[id]" value="{{coloniaId}}"> <!-- Enviamos el objeto colonia con su id -->
+      <input type="hidden" name="colonia[id]" value="{{coloniaId}}"> 
 
       <div class="mb-3 d-flex align-items-center">
         <label for="edadAproximada" class="form-label w-50">Edad Aproximada:</label>

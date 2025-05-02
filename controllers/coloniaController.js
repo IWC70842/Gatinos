@@ -1,11 +1,23 @@
+/**
+ * @author Jose Antonio Pozo Gonzalez
+ * @email iwc70842@educastur.es
+ * @version 1.0
+ * @description  Script que gestiona las operaciones CRUD (crear, listar, recuperar, actualizar y eliminar)
+ *  para las colonias en la aplicación. Utiliza servicios (coloniaService y gatoService) para interactuar
+ *  con la base de datos y realizar estas operaciones. Para cada operación, se renderiza una vista
+ *  correspondiente, pasando los datos necesarios a la plantilla de Handlebars para su visualización.
+ */
+
+// Dependencias
 const coloniaService = require("../services/coloniaService");
 const gatoService = require("../services/gatoService");
 
-
+//Listar todas las colonias.
 exports.listar = async (req, res) => {
   try {
+    //Recupera todas las colonias desde el servicio
     const colonias = await coloniaService.listarColonias();
-    //res.render('colonias/colonias',{colonias});
+    //Renderiza la vista de las colonias
     res.render('colonias/colonias', {
       title: 'Colonias',
       colonias,
@@ -17,6 +29,10 @@ exports.listar = async (req, res) => {
   }
 };
 
+/**
+ * Crear una nueva colonia.
+ * Recibe los datos del formulario, crea la colonia y luego muestra la vista de creación de colonia.
+ */
 exports.crear = async (req, res) => {
   try {
     const resultado = await coloniaService.crearColonia(req.body);
@@ -31,6 +47,10 @@ exports.crear = async (req, res) => {
   }
 };
 
+/**
+ * Recuperar los detalles de una colonia específica.
+ * Recupera los datos de la colonia utilizando su ID y renderiza la vista con los datos de la colonia.
+ */
 exports.recuperarPorId = async (req, res) => {
   try {
     const detalleColonia = await coloniaService.recuperarPorId(req.params.id);    
@@ -45,6 +65,10 @@ exports.recuperarPorId = async (req, res) => {
   }
 };
 
+/**
+ * Actualizar una colonia existente.
+ * Recibe los datos del formulario de actualización y guarda los cambios en la colonia.
+ */
 exports.actualizar = async (req, res) => {
   try {
     const resultado = await coloniaService.actualizarColonia(req.body);
@@ -59,6 +83,10 @@ exports.actualizar = async (req, res) => {
   }
 };
 
+/**
+ * Eliminar una colonia.
+ * Recibe el ID de la colonia y la elimina, mostrando la vista de confirmación de eliminación.
+ */
 exports.eliminar = async (req, res) => {
   try {
     const resultado = await coloniaService.eliminarColonia(req.params.id); 
@@ -73,6 +101,11 @@ exports.eliminar = async (req, res) => {
   }
 };
 
+/**
+ * Recuperar los detalles de una colonia junto con los gatos pertenecientes a ella.
+ * Recupera la colonia por ID y lista los gatos asociados a ella, luego renderiza la 
+ * vista de detalle de la colonia.
+ */
 exports.recuperarPorId = async (req, res) => {
   try {
     const idColonia = req.params.id;

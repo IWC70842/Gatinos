@@ -68,7 +68,7 @@ exports.eliminarGato = async (id) => {
   return await gatoRepository.eliminarGato(id);
 };
 
-// Este es el servicio para obtener los gatos por colonia
+// Servicio para obtener los gatos por colonia
 exports.listarGatosPorColonia = async (coloniaId) => {
   try {
     const gatos = await gatoRepository.listarGatos(); // Traemos todos los gatos

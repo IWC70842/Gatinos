@@ -29,7 +29,7 @@ exports.listar = async (req, res) => {
   }
 };
 
-// Función para mostrar el formulario de creación de colonia
+// Mostrar el formulario de creación de colonia
 exports.mostrarFormularioCrear = (req, res) => {
   res.render('colonias/crearColonia', {
     title: 'Crear Colonia',
@@ -55,7 +55,7 @@ exports.crear = async (req, res) => {
 
     const resultado = await coloniaService.crearColonia(datosColonia);
 
-    // Redirige a la lista de colonias con un mensaje de éxito
+    // Redirige a la lista de colonias
     res.redirect('/colonias');
   } catch (error) {
     console.error("Error al crear colonia: ", error.message);    

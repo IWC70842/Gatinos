@@ -19,12 +19,15 @@
     <div>
       <img src="{{detalleColonia.imagenColonia}}" alt="Imagen de {{detalleColonia.nombre}}"
         onerror="this.src='/img/default.jpg'; this.onerror=null;" class="img-fluid rounded mt-3 mb-3"
-        style="max-width: 300px;">      
+        style="max-width: 300px;">
     </div>
-  </div> 
-  
+  </div>
+
   <a href="/gatos/crear/{{detalleColonia.id}}" class="btn btn-outline-success shadow me-3">Nuevo Gato</a>
   <a href="/colonias/editar/{{detalleColonia.id}}" class="btn btn-outline-info shadow me-3">Editar Colonia</a>
+  <form id="formEliminarColonia" data-id="{{detalleColonia.id}}" class="d-inline me-3">
+    <button type="submit" class="btn btn-outline-danger shadow">Eliminar Colonia</button>
+  </form>
   <a href="/colonias/" class="btn btn-outline-primary shadow">Volver a la ventana Colonias</a>
 
   <h2 class="text-center mt-4 mb-4">Gatos de esta colonia</h2>
@@ -51,10 +54,11 @@
     {{/if}}
   </div>
 
-  <a href="/colonias/" class="mt-4 btn btn-outline-primary">Volver a la ventana Colonias</a> 
+  <a href="/colonias/" class="mt-4 btn btn-outline-primary">Volver a la ventana Colonias</a>
 </div>
 
 
 
 {{{css}}}
 <script src="/js/gato.js"></script>
+<script src="/js/colonias.js"></script>

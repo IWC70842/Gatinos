@@ -146,16 +146,12 @@ exports.actualizar = async (req, res) => {
 
 /**
  * Eliminar una colonia.
- * Recibe el ID de la colonia y la elimina, mostrando la vista de confirmación de eliminación.
+ * Recibe el ID de la colonia y la elimina.
  */
 exports.eliminar = async (req, res) => {
   try {
-    const resultado = await coloniaService.eliminarColonia(req.params.id);
-    res.render('colonias/borrarColonia', {
-      title: 'Eliminar colonia',
-      resultado,
-      css: '<link rel="stylesheet" href="/css/colonias.css">'
-    });
+    await coloniaService.eliminarColonia(req.params.id);
+    res.status(200).send("Colonia eliminada correctamente");
   } catch (error) {
     console.error("Error al eliminar colonia: ", error.message);
     res.status(500).send("Error del servidor");

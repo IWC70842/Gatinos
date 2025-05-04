@@ -5,7 +5,7 @@
  * @description  Renderización de la vista Index
  */
 
-// Función que maneja la renderización de la vista 'index' para el dashboard
+// Función que maneja la renderización de la vista 'index' para el "dashboard"
 exports.dashboard = (req,res)=>{
   res.render('index',{
     title: 'Gestión de Colonias Felinas',

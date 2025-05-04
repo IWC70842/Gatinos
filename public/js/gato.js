@@ -1,3 +1,9 @@
+/**
+ * @author Jose Antonio Pozo Gonzalez
+ * @email iwc70842@educastur.es
+ * @version 1.0
+ * @description  Funciones y eventos que gestionan acciones sobre "cartas" de Gatos
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Seleccionamos todas las tarjetas de los gatos
@@ -12,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Redirigimos a la página de detalles del gato
       window.location.href = `/gatos/${gatoId}`;
     });
-  }); 
-  
+  });
+
   const btnEliminar = document.querySelector('.btn-eliminar-gato');
 
   if (btnEliminar) {

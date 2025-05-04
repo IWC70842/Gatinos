@@ -1,5 +1,16 @@
+/**
+ * @author Jose Antonio Pozo Gonzalez
+ * @email iwc70842@educastur.es
+ * @version 1.0
+ * @description  Lógica de negocio relacionada con Colonias.
+ * Interactua con gatoRepository para las acciones del "CRUD" y maneja los posibles errores.
+ * También maneja el procesamiento adicional, como ordenar por salud y asignar clases CSS según el estado de salud de los gatos
+ */
+
 const gatoRepository = require("../repositories/gatoRepository");
 
+// Listar todos los gatos y clasificarlos según su estado de salud
+// Filtra los gatos activos (sin fecha de salida) y eliminados (con fecha de salida), luego los clasifica por salud.
 exports.listarGatos = async () => {
   const gatos = await gatoRepository.listarGatos();
 
@@ -9,6 +20,7 @@ exports.listarGatos = async () => {
     'SANO': 2
   };
 
+  // Asigna clases CSS y iconos para cada gato en función de su salud y CER
   const gatosConClase = gatos.map(gato => {
     let saludClase = '';
     switch (gato.salud) {
@@ -34,6 +46,7 @@ exports.listarGatos = async () => {
     };
   });
 
+  // Filtra y clasifica los gatos según su salud y fecha de salida
   const gatosActivos = gatosConClase
     .filter(gato => gato.fechaSalida === null)
     .sort((a, b) => ordenSalud[a.salud] - ordenSalud[b.salud]);
@@ -47,31 +60,40 @@ exports.listarGatos = async () => {
   };
 };
 
+// Recuperar un gato por su ID
+// Verifica que el ID esté presente y luego lo recupera del repositorio.
 exports.recuperarGatoPorId = async (id) => {
   if (!id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.recuperarGatoPorId(id);
 };
 
+// Crear un nuevo gato
+// Verifica que los datos del gato estén presentes antes de crear el registro en el repositorio.
 exports.crearGato = async (gato) => {
   if (!gato) throw new Error('Datos de gato requeridos');
   return await gatoRepository.crearGato(gato);
 };
 
+// Actualizar un gato existente
+// Verifica que los datos y el ID del gato estén presentes antes de realizar la actualización.
 exports.actualizarGato = async (gato) => {
   if (!gato) throw new Error('Datos de gato requeridos');
   if (!gato.id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.actualizarGato(gato);
 };
 
+// Eliminar un gato por su ID
+// Verifica que el ID esté presente y luego llama al repositorio para eliminarlo(borrado lógico)
 exports.eliminarGato = async (id) => {
   if (!id) throw new Error('No ha llegado el id requerido');
   return await gatoRepository.eliminarGato(id);
 };
 
-// Servicio para obtener los gatos por colonia
+// Obtener los gatos pertenecientes a una colonia específica
+// Filtra los gatos por la colonia y por su estado activo (fechaSalida nula), luego los ordena por salud.
 exports.listarGatosPorColonia = async (coloniaId) => {
   try {
-    const gatos = await gatoRepository.listarGatos(); // Traemos todos los gatos
+    const gatos = await gatoRepository.listarGatos();
 
     // Filtramos los gatos por colonia y fechaSalida == null
     const gatosColonia = gatos
@@ -121,6 +143,8 @@ exports.listarGatosPorColonia = async (coloniaId) => {
   }
 };
 
+// Guardar la edición de un gato
+// Actualiza los detalles del gato, y maneja los errores en caso de fallo.
 exports.guardarEdicion = async (gato) => {
   try {
     return await gatoRepository.actualizarGato(gato);

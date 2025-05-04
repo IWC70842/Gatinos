@@ -1,10 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() { 
+/**
+ * @author Jose Antonio Pozo Gonzalez
+ * @email iwc70842@educastur.es
+ * @version 1.0
+ * @description  Funciones para eventos y acciones sobre "cartas" de Colonias
+ */
+document.addEventListener('DOMContentLoaded', function () {
 
-  const cards = document.querySelectorAll('.colonia-card'); 
+  const cards = document.querySelectorAll('.colonia-card');
 
   cards.forEach(card => {
     card.addEventListener('click', () => {
-      const id = card.getAttribute('data-id');      
+      const id = card.getAttribute('data-id');
 
       if (id) {
         window.location.href = `/colonias/${id}`;
@@ -35,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
           if (!response.ok) {
             throw new Error('No se pudo eliminar la colonia');
           }
-          
-          alert( 'Colonia eliminada correctamente.');
+
+          alert('Colonia eliminada correctamente.');
           window.location.href = '/colonias';
         } catch (error) {
           console.error('Error al eliminar la colonia:', error);

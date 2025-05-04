@@ -1,3 +1,9 @@
+/**
+ * @author Jose Antonio Pozo Gonzalez
+ * @email iwc70842@educastur.es
+ * @version 1.0
+ * @description  Estilos para las plantillas que muestren o actuen con Gatos
+ */
 #gatos-container {
   display: flex;
   flex-wrap: wrap;

@@ -61,7 +61,7 @@ describe('ColoniaRepository CRUD happypath', () => {
      const resultado = await coloniaRepository.actualizarColonia(mockColonia);
      //Assert
      expect(resultado).toEqual(1);
-     expect(mockPut).toHaveBeenCalledWith('/colonias', mockColonia);
+     expect(mockPut).toHaveBeenCalledWith(`/colonias/${mockColonia.id}`, mockColonia);
 
   })
 });

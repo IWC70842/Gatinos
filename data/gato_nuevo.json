@@ -1,0 +1,19 @@
+{
+  "imagenGato": "/img/gatos/nuevo.webp",
+  "edadAproximada": 2,
+  "raza": "Siamés",
+  "colores": "Beige y marrón",
+  "sexo": "MACHO",
+  "pelaje": "CORTO",
+  "tamano": "MEDIANO",
+  "vacunado": false,
+  "cer": true,
+  "salud": "REGULAR",
+  "fechaEntrada": "2025-05-01",
+  "fechaSalida": null,
+  "motivoEntrada": "Rescatado",
+  "motivoSalida": null,
+  "colonia": {
+    "id": 2
+  }
+}

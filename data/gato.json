@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "imagenGato": "/img/gatos/g1.webp",
+  "edadAproximada": 1,
+  "raza": "Angora",
+  "colores": "Blanco",
+  "sexo": "HEMBRA",
+  "pelaje": "LARGO",
+  "tamano": "GRANDE",
+  "vacunado": true,
+  "cer": true,
+  "salud": "SANO",
+  "fechaEntrada": "2025-04-27",
+  "fechaSalida": null,
+  "motivoEntrada": "Abandono",
+  "motivoSalida": null,
+  "colonia": {
+    "id": 1
+  }
+}

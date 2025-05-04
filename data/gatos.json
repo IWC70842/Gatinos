@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "imagenGato": "/img/gatos/g1.webp",
+    "edadAproximada": 1,
+    "raza": "Angora",
+    "colores": "Blanco",
+    "sexo": "HEMBRA",
+    "pelaje": "LARGO",
+    "tamano": "GRANDE",
+    "vacunado": true,
+    "cer": true,
+    "salud": "SANO",
+    "fechaEntrada": "2025-04-27",
+    "fechaSalida": null,
+    "motivoEntrada": "Abandono",
+    "motivoSalida": null,
+    "colonia": {
+      "id": 1
+    }
+  },
+  {
+    "id": 2,
+    "imagenGato": "/img/gatos/g2.webp",
+    "edadAproximada": 3,
+    "raza": "Persa",
+    "colores": "Gris",
+    "sexo": "MACHO",
+    "pelaje": "LARGO",
+    "tamano": "GRANDE",
+    "vacunado": false,
+    "cer": false,
+    "salud": "ENFERMO",
+    "fechaEntrada": "2025-03-15",
+    "fechaSalida": null,
+    "motivoEntrada": "Herido",
+    "motivoSalida": null,
+    "colonia": {
+      "id": 3
+    }
+  }
+]

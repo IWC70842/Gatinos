@@ -26,7 +26,8 @@ exports.listar = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al obtener gatos: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
+    //res.status(500).send("Error del servidor");
   }
 };
 

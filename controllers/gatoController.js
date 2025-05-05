@@ -26,8 +26,7 @@ exports.listar = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al obtener gatos: ", error.message);
-    res.status(500).render('500');
-    //res.status(500).send("Error del servidor");
+    res.status(500).render('500');    
   }
 };
 
@@ -79,7 +78,7 @@ exports.crear = async (req, res) => {
 
   } catch (error) {
     console.error("Error al crear el gato:", error.message);
-    res.status(500).send("Error al crear el gato.");
+    res.status(500).render('500');
   }
 };
 
@@ -96,7 +95,7 @@ exports.recuperarPorId = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al recuperar gato: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -113,7 +112,7 @@ exports.actualizar = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al actualizar gato: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -125,7 +124,8 @@ exports.eliminar = async (req, res) => {
     res.status(200).json({ mensaje: 'Gato eliminado', resultado });
   } catch (error) {
     console.error("Error al eliminar gato: ", error.message);
-    res.status(500).json({ error: 'Hubo un error al eliminar el gato' });
+    //res.status(500).json({ error: 'Hubo un error al eliminar el gato' });
+    res.status(500).render('500');
   }
 };
 
@@ -148,7 +148,7 @@ exports.listarPorColonia = async (req, res) => {
 
   } catch (error) {
     console.error("Error al obtener gatos de la colonia: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -165,7 +165,7 @@ exports.editarGato = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al recuperar gato para edición: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -224,6 +224,6 @@ exports.guardarEdicion = async (req, res) => {
     res.redirect(`/gatos/${id}`); // Redirigir a la vista de detalle del gato
   } catch (error) {
     console.error("Error al guardar los cambios del gato: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };

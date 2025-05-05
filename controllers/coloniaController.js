@@ -25,7 +25,7 @@ exports.listar = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al obtener colonias: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -59,7 +59,7 @@ exports.crear = async (req, res) => {
     res.redirect('/colonias');
   } catch (error) {
     console.error("Error al crear colonia: ", error.message);    
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -77,7 +77,7 @@ exports.recuperarColoniaPorId = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al recuperar colonia: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -93,7 +93,7 @@ exports.editarColonia = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al obtener colonia para edición: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -122,7 +122,7 @@ exports.guardarEdicion = async (req, res) => {
     res.redirect(`/colonias/${coloniaId}`);
   } catch (error) {
     console.error("Error al guardar la edición de colonia: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -140,7 +140,7 @@ exports.actualizar = async (req, res) => {
     });
   } catch (error) {
     console.error("Error al actualizar colonia: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -154,7 +154,7 @@ exports.eliminar = async (req, res) => {
     res.status(200).send("Colonia eliminada correctamente");
   } catch (error) {
     console.error("Error al eliminar colonia: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
@@ -183,7 +183,7 @@ exports.recuperarDetallesColoniaConGatos = async (req, res) => {
 
   } catch (error) {
     console.error("Error al recuperar colonia: ", error.message);
-    res.status(500).send("Error del servidor");
+    res.status(500).render('500');
   }
 };
 
